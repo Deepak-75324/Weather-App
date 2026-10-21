@@ -1,16 +1,56 @@
-# React + Vite
+# Weather Widget
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React weather app built with Vite and Material UI. Search for a city to see its current weather, including temperature, humidity, daily minimum and maximum temperatures, and the “feels like” temperature. The card also displays a weather description and changes its image and icon based on the returned conditions.
 
-Currently, two official plugins are available:
+## Requirements
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Node.js compatible with Vite 8
+- npm
+- An OpenWeatherMap API key
 
-## React Compiler
+## Getting started
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Install the dependencies:
 
-## Expanding the ESLint configuration
+```bash
+npm install
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Start the development server:
+
+```bash
+npm run dev
+```
+
+Open the local URL printed by Vite in your browser.
+
+## Available commands
+
+| Command | Description |
+| --- | --- |
+| `npm run dev` | Start the Vite development server |
+| `npm run build` | Create a production build in `dist/` |
+| `npm run preview` | Preview the production build locally |
+| `npm run lint` | Run ESLint |
+
+## Weather API key
+
+Weather data is requested from the [OpenWeatherMap Current Weather API](https://openweathermap.org/current) in metric units. The API key is currently set as `API_KEY` in `src/SearchBox.jsx`. To use your own key, replace that value with an active OpenWeatherMap API key.
+
+The key is included in requests made by the browser, so it is visible to users of the app. Do not use a private or production-sensitive key in this client-side code. For production, proxy weather requests through a server and keep the key in server-side configuration.
+
+## Project structure
+
+```text
+src/
+  App.jsx          App entry component
+  WeatherApp.jsx   Weather state and page composition
+  SearchBox.jsx    City search and weather API request
+  InfoBox.jsx      Weather details card
+  main.jsx         React application bootstrap
+public/            Static public assets
+```
+
+## Weather search
+
+Enter a city name and submit the form to fetch its current conditions. A successful search updates the displayed weather. If the city cannot be found or the request fails, the app displays an error message.
